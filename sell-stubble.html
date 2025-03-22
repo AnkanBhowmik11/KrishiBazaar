@@ -6,26 +6,11 @@
     <title>Sell Your Stubble - Krishi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Animated green gradient background */
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        body {
-            background: linear-gradient(45deg, #0f9b0f, #1abc9c, #2ecc71);
-            background-size: 300% 300%;
-            animation: gradientAnimation 10s ease infinite;
-        }
-    </style>
 </head>
-<body class="relative">
-    <div class="absolute inset-0 bg-black bg-opacity-30 backdrop-blur-md -z-10"></div>
+<body class="bg-gradient-animation">
 
     <!-- Navbar -->
-    <nav class="bg-black bg-opacity-80 text-white fixed w-full top-0 flex justify-between items-center p-4 shadow-md">
+    <nav class="bg-black bg-opacity-80 text-white fixed w-full top-0 flex justify-between items-center p-4 shadow-md z-10">
         <div class="flex items-center space-x-3">
             <img src="logo.png" alt="Krishi Logo" class="w-10 h-10">
             <span class="text-xl font-bold">Krishi</span>
@@ -38,8 +23,8 @@
         </div>
     </nav>
 
-    <!-- Hero Section with Background -->
-    <section class="flex items-center justify-center h-screen">
+    <!-- Hero Section with Adjusted Spacing -->
+    <section class="flex items-center justify-center min-h-screen pt-24">
         <div class="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-lg w-full">
             <h1 class="text-2xl font-bold text-center mb-6">Sell Your Stubble</h1>
 
