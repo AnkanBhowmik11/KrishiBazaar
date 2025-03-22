@@ -25,9 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // 🌍 State and District Data
     const data = {
-        "West Bengal": ["Kolkata", "Howrah", "Darjeeling", "Siliguri", "Asansol"],
-        "Bihar": ["Patna", "Gaya", "Muzaffarpur", "Bhagalpur", "Begusarai"],
-        "Jharkhand": ["Ranchi", "Jamshedpur", "Dhanbad", "Bokaro", "Hazaribagh"]  
+      "West Bengal": ["Kolkata", "Howrah", "Darjeeling"],
+      "Bihar": ["Patna", "Gaya", "Muzaffarpur"],
+      "Jharkhand": ["Ranchi", "Jamshedpur", "Dhanbad"]
     };
   
     // 🏛️ Populate states dynamically
