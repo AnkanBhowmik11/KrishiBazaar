@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishi - Sustainable Farming</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .animated-gradient {
+            background: linear-gradient(270deg, #34D399, #059669);
+            background-size: 400% 400%;
+            animation: gradientAnimation 5s ease infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    
+    <!-- Navbar with Animated Gradient -->
+    <nav class="animated-gradient p-4 flex justify-between items-center text-white">
+        <div class="text-xl font-bold flex items-center">
+            <img src="logo.png" alt="Krishi Logo" class="h-8 mr-2"> Krishi
+        </div>
+        <div class="space-x-4">
+            <a href="sell-stubble.html" class="hover:underline transition duration-300">Sell your Stubble</a>
+            <a href="krishibazaar.html" class="hover:underline transition duration-300">KrishiBazaar</a>
+            <a href="login.html" class="hover:underline transition duration-300">Login / Sign Up</a>
+
+
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="relative w-full h-96 bg-cover bg-center" style="background-image: url('farmers.jpg');">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+            <h1 class="text-white text-3xl md:text-5xl font-bold text-center">Empowering Farmers, Sustaining the Future</h1>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="p-10 text-center">
+        <h2 class="text-2xl font-semibold">About Krishi</h2>
+        <p class="mt-4 text-gray-700 max-w-3xl mx-auto">Krishi aims to create a sustainable ecosystem where farmers can sell stubble, buy farming products, and contribute to organic recycling.</p>
+    </section>
+    
+    <!-- Footer with Contact Form -->
+    <footer class="bg-green-700 text-white p-6 text-center">
+        <h3 class="text-lg font-semibold">Contact Us</h3>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="mt-4 max-w-md mx-auto">
+            <input type="email" name="email" placeholder="Your Email" class="w-full p-2 mb-2 border rounded text-black" required>
+            <textarea name="message" placeholder="Your Message" class="w-full p-2 mb-2 border rounded text-black" required></textarea>
+            <button type="submit" class="bg-white text-green-700 p-2 rounded w-full hover:bg-green-600 hover:text-white transition duration-300">Send</button>
+        </form>
+    </footer>
+    
+</body>
+</html>

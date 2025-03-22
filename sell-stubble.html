@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Your Stubble - Krishi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-cover bg-center bg-no-repeat relative" style="background-image: url('stubble-bg.jpg');">
+    <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-md -z-10"></div>
+    <!-- Navbar -->
+    <nav class="bg-black bg-opacity-80 text-white fixed w-full top-0 flex justify-between items-center p-4 shadow-md">
+        <div class="flex items-center space-x-3">
+            <img src="logo.png" alt="Krishi Logo" class="w-10 h-10">
+            <span class="text-xl font-bold">Krishi</span>
+        </div>
+        <div class="space-x-6">
+            <a href="index.html" class="hover:text-gray-300">Home</a>
+            <a href="sell-stubble.html" class="text-yellow-400 font-semibold">Sell your Stubble</a>
+            <a href="marketplace.html" class="hover:text-gray-300">KrishiBazaar</a>
+            <a href="login.html" class="hover:text-gray-300">Login / Sign Up</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Background -->
+    <section class="flex items-center justify-center h-screen">
+        <div class="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-lg w-full">
+            <h1 class="text-2xl font-bold text-center mb-6">Sell Your Stubble</h1>
+
+            <form id="sell-stubble-form" class="space-y-4">
+                <!-- 🌾 Crop Selection -->
+                <div>
+                    <label for="crop" class="block font-medium">Your Crop</label>
+                    <select id="crop" name="crop" required class="w-full p-2 border rounded">
+                        <option value="" disabled selected>Select your crop</option>
+                        <option value="Rice">Rice</option>
+                        <option value="Wheat">Wheat</option>
+                        <option value="Sugarcane">Sugarcane</option>
+                    </select>
+                </div>
+
+                <!-- 📌 Rates Information (Initially Hidden) -->
+                <div id="rates-info" class="bg-gray-100 p-3 rounded hidden">
+                    <p class="font-semibold">Current Rate (per ton):</p>
+                    <p id="cropRate" class="text-lg font-bold"></p>
+                </div>
+
+                <!-- 📜 Full Name Input -->
+                <div>
+                    <label for="fullName" class="block font-medium">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required class="w-full p-2 border rounded" placeholder="Enter your full name">
+                </div>
+
+
+                <!-- 📍 Location Details -->
+                <div>
+                    <label for="state" class="block font-medium">State</label>
+                    <select id="state" name="state" required class="w-full p-2 border rounded">
+                        <option value="" disabled selected>Loading states...</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="district" class="block font-medium">District</label>
+                    <select id="district" name="district" required class="w-full p-2 border rounded">
+                        <option value="" disabled selected>Select a state first</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="village" class="block font-medium">Village</label>
+                    <input type="text" id="village" name="village" required class="w-full p-2 border rounded" placeholder="Enter your village name">
+                </div>
+
+                <div>
+                    <label for="pincode" class="block font-medium">Pincode</label>
+                    <input type="text" id="pincode" name="pincode" pattern="[0-9]{6}" required class="w-full p-2 border rounded" placeholder="6-digit Pincode">
+                </div>
+
+                <!-- 📞 Contact Details -->
+                <div>
+                    <label for="contact" class="block font-medium">Contact Number</label>
+                    <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" required class="w-full p-2 border rounded" placeholder="Enter 10-digit mobile number">
+                </div>
+
+                <!-- 📢 Popup Message -->
+                <div id="popupMessage" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded shadow-lg hidden">
+                    We will get back to you soon...
+                </div>
+
+
+                <!-- 🚀 Submit Button -->
+                <button type="submit" class="w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600">
+                    Submit and Request a Call
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Linking the external JS file -->
+    <script src="script.js"></script>
+
+</body>
+</html>

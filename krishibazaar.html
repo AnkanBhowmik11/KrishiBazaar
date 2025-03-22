@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrishiBazaar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="navbar bg-green-700">
+        <div class="max-w-6xl mx-auto flex items-center justify-between p-3">
+            <div class="flex items-center space-x-3">
+                <img src="logo.png" alt="KrishiBazaar Logo" class="h-10">
+                <a href="#" class="text-2xl font-bold text-white">KrishiBazaar</a>
+            </div>
+            <ul class="flex space-x-6 ml-auto">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="krishibazaar.html" class="nav-link active">Products</a></li>
+                <li><a href="#" class="nav-link">Cart (<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Search Bar -->
+    <div class="max-w-6xl mx-auto p-4">
+        <input type="text" id="searchInput" placeholder="Search for a product..." 
+            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+    </div>
+
+    <!-- Product Section -->
+    <section class="max-w-6xl mx-auto p-8">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Available Products</h2>
+        
+        <div id="productGrid" class="grid md:grid-cols-2 gap-6">
+            <!-- Product 1 -->
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden product" data-name="hybrid wheat pardhan 121 seed">
+                <img src="wheat-seed.jpg" alt="Hybrid Wheat Pardhan 121 Seed" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Hybrid Wheat Pardhan 121 Seed</h3>
+                    <p class="text-gray-600 mt-2">Packaging Type: PP Bag</p>
+                    <p class="text-green-600 font-bold mt-2">₹45/Kg</p>
+                    <div class="flex items-center mt-2">
+                        <button onclick="decreaseQty('wheat')" class="px-2 py-1 bg-gray-300 rounded">-</button>
+                        <input id="qty-wheat" type="number" min="1" max="20" value="1" class="mx-2 w-12 text-center border">
+                        <button onclick="increaseQty('wheat')" class="px-2 py-1 bg-gray-300 rounded">+</button>
+                        <p class="ml-4 text-green-700 font-bold" id="price-wheat">₹45</p>
+                    </div>
+                    <button onclick="addToCart('Hybrid Wheat Pardhan 121 Seed', 45)" class="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden product" data-name="pr-131 paddy seeds">
+                <img src="paddy-seed.jpg" alt="PR-131 Paddy Seeds" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold text-gray-800">PR-131 Paddy Seeds</h3>
+                    <p class="text-gray-600 mt-2">30 Kg, Packaging Type: PP Bag</p>
+                    <p class="text-green-600 font-bold mt-2">₹65/Kg</p>
+                    <div class="flex items-center mt-2">
+                        <button onclick="decreaseQty('paddy')" class="px-2 py-1 bg-gray-300 rounded">-</button>
+                        <input id="qty-paddy" type="number" min="1" max="20" value="1" class="mx-2 w-12 text-center border">
+                        <button onclick="increaseQty('paddy')" class="px-2 py-1 bg-gray-300 rounded">+</button>
+                        <p class="ml-4 text-green-700 font-bold" id="price-paddy">₹65</p>
+                    </div>
+                    <button onclick="addToCart('PR-131 Paddy Seeds', 65)" class="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function increaseQty(type) {
+            let qtyInput = document.getElementById(`qty-${type}`);
+            let priceDisplay = document.getElementById(`price-${type}`);
+            let pricePerKg = type === 'wheat' ? 45 : 65;
+            if (qtyInput.value < 20) {
+                qtyInput.value++;
+                priceDisplay.innerText = `₹${qtyInput.value * pricePerKg}`;
+            }
+        }
+
+        function decreaseQty(type) {
+            let qtyInput = document.getElementById(`qty-${type}`);
+            let priceDisplay = document.getElementById(`price-${type}`);
+            let pricePerKg = type === 'wheat' ? 45 : 65;
+            if (qtyInput.value > 1) {
+                qtyInput.value--;
+                priceDisplay.innerText = `₹${qtyInput.value * pricePerKg}`;
+            }
+        }
+    </script>
+</body>
+</html>
