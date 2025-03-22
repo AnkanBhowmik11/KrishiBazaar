@@ -327,7 +327,7 @@ margin-bottom: 20px;
 }
 
 .bg-gradient-animation {
-    background: linear-gradient(45deg, #008000, #00cc00, #33ff33, #66ff66);
+    background: linear-gradient(45deg, #0f9b0f, #1abc9c, #2ecc71);
     background-size: 300% 300%;
     animation: gradientAnimation 8s infinite alternate;
     min-height: 100vh;
