@@ -1,37 +1,12 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBLiQVkhI-EzyAZQDTqYlT6g2_1Uxcd0tY",
-  authDomain: "sell-stubble.firebaseapp.com",
-  databaseURL: "https://sell-stubble-default-rtdb.firebaseio.com",
-  projectId: "sell-stubble",
-  storageBucket: "sell-stubble.firebasestorage.app",
-  messagingSenderId: "700424695060",
-  appId: "1:700424695060:web:72da3816f12d23877da601",
-  measurementId: "G-6475308Y07"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+document.addEventListener("DOMContentLoaded", function () {
+  const stateDropdown = document.getElementById("state");
+  const districtDropdown = document.getElementById("district");
+  const cropSelect = document.getElementById("crop");
+  const cropRate = document.getElementById("cropRate");
   
-
-document.addEventListener("DOMContentLoaded", function () {  
-    const stateDropdown = document.getElementById("state");  
-    const districtDropdown = document.getElementById("district");  
-    const cropSelect = document.getElementById("crop");  
-    const cropRate = document.getElementById("cropRate");  
-
-
-    // State and District Data  
-    const data = {  
-        "Andhra Pradesh": ["Anantapur", "Chittoor", "East Godavari", "Guntur", "Krishna", "Kurnool", "Nellore", "Prakasam", "Srikakulam", "Visakhapatnam", "Vizianagaram", "West Godavari", "YSR Kadapa"],
+  // State and District Data
+  const data = {
+  "Andhra Pradesh": ["Anantapur", "Chittoor", "East Godavari", "Guntur", "Krishna", "Kurnool", "Nellore", "Prakasam", "Srikakulam", "Visakhapatnam", "Vizianagaram", "West Godavari", "YSR Kadapa"],
     "Arunachal Pradesh": ["Tawang", "West Kameng", "East Kameng", "Papum Pare", "Kurung Kumey", "Kra Daadi", "Lower Subansiri", "Upper Subansiri", "West Siang", "East Siang", "Siang", "Upper Siang", "Lower Siang", "Dibang Valley", "Lower Dibang Valley", "Anjaw", "Changlang", "Tirap", "Longding"],
     "Assam": ["Baksa", "Barpeta", "Biswanath", "Bongaigaon", "Cachar", "Charaideo", "Chirang", "Darrang", "Dhemaji", "Dhubri", "Dibrugarh", "Goalpara", "Golaghat", "Hailakandi", "Hojai", "Jorhat", "Kamrup", "Kamrup Metropolitan", "Karbi Anglong", "Karimganj", "Kokrajhar", "Lakhimpur", "Majuli", "Morigaon", "Nagaon", "Nalbari", "Sivasagar", "Sonitpur", "South Salmara-Mankachar", "Tinsukia", "Udalguri", "West Karbi Anglong"],
     "Bihar": ["Araria", "Arwal", "Aurangabad", "Banka", "Begusarai", "Bhagalpur", "Bhojpur", "Buxar", "Darbhanga", "East Champaran", "Gaya", "Gopalganj", "Jamui", "Jehanabad", "Kaimur", "Katihar", "Khagaria", "Kishanganj", "Lakhisarai", "Madhepura", "Madhubani", "Munger", "Muzaffarpur", "Nalanda", "Nawada", "Patna", "Purnia", "Rohtas", "Saharsa", "Samastipur", "Saran", "Sheikhpura", "Sheohar", "Sitamarhi", "Siwan", "Supaul", "Vaishali", "West Champaran"],
@@ -66,66 +41,47 @@ document.addEventListener("DOMContentLoaded", function () {
 "Jammu and Kashmir": ["Anantnag", "Bandipora", "Baramulla", "Budgam", "Doda", "Ganderbal", "Jammu", "Kathua", "Kishtwar", "Kulgam", "Kupwara", "Poonch", "Pulwama", "Rajouri", "Ramban", "Reasi", "Samba", "Shopian", "Srinagar", "Udhampur"],
 "Ladakh": ["Kargil", "Leh"],
 "Lakshadweep": ["Agatti", "Amini", "Andrott", "Bangaram", "Bitra", "Chetlat", "Kadmat", "Kalpeni", "Kavaratti", "Kilthan", "Minicoy"],
-"Puducherry": ["Karaikal", "Mahe", "Puducherry", "Yanam"]  
-    };  
+"Puducherry": ["Karaikal", "Mahe", "Puducherry", "Yanam"]      
+  };
 
-    // Crop rates  
-    const rates = {  
-        "Rice": "₹1500 per Quintal",  
-        "Wheat": "₹1800 per Quintal",  
-        "Sugarcane": "₹2500 per Quintal"  
-    };  
+  // Crop rates
+  const rates = {
+      "Rice": "₹1500 per Quintal",
+      "Wheat": "₹1800 per Quintal",
+      "Sugarcane": "₹2500 per Quintal"
+  };
 
-    // Populate states dynamically  
-    stateDropdown.innerHTML = "<option value=''>--Select State--</option>";  
-    Object.keys(data).forEach(state => {  
-        let option = document.createElement("option");  
-        option.value = state;  
-        option.textContent = state;  
-        stateDropdown.appendChild(option);  
-    });  
+  // Populate states dynamically
+  stateDropdown.innerHTML = "<option value=''>--Select State--</option>";
+  Object.keys(data).forEach(state => {
+      let option = document.createElement("option");
+      option.value = state;
+      option.textContent = state;
+      stateDropdown.appendChild(option);
+  });
 
-    // Populate districts based on selected state  
-    stateDropdown.addEventListener("change", function () {  
-        const selectedState = this.value;  
-        districtDropdown.innerHTML = "<option value=''>--Select District--</option>";  
+  // Populate districts based on selected state
+  stateDropdown.addEventListener("change", function () {
+      const selectedState = this.value;
+      districtDropdown.innerHTML = "<option value=''>--Select District--</option>";
 
-        if (selectedState && data[selectedState]) {  
-            data[selectedState].forEach(district => {  
-                let option = document.createElement("option");  
-                option.value = district;  
-                option.textContent = district;  
-                districtDropdown.appendChild(option);  
-            });  
-        }  
-    });  
+      if (selectedState && data[selectedState]) {
+          data[selectedState].forEach(district => {
+              let option = document.createElement("option");
+              option.value = district;
+              option.textContent = district;
+              districtDropdown.appendChild(option);
+          });
+      }
+  });
 
-    // Update crop rate and push to Firebase  
-    cropSelect.addEventListener("change", function () {  
-        if (cropSelect.value in rates) {  
-            cropRate.textContent = `Our Rate: ${rates[cropSelect.value]}`;  
-            document.getElementById("rates-info").classList.remove("hidden");  
-        } else {  
-            document.getElementById("rates-info").classList.add("hidden");  
-        }
-
-        // Push selected data to Firebase  
-        const selectedState = stateDropdown.value;  
-        const selectedDistrict = districtDropdown.value;  
-        const selectedCrop = cropSelect.value;  
-
-        if (selectedState && selectedDistrict && selectedCrop) {  
-            db.ref("stubble-sales").push({  
-                state: selectedState,  
-                district: selectedDistrict,  
-                crop: selectedCrop,  
-                rate: rates[selectedCrop],  
-                timestamp: new Date().toISOString()  
-            }).then(() => {  
-                console.log("Data saved successfully!");  
-            }).catch(error => {  
-                console.error("Error saving data:", error);  
-            });  
-        }  
-    });  
+  // Update crop rate on selection
+  cropSelect.addEventListener("change", function () {
+      if (cropSelect.value in rates) {
+          cropRate.textContent = `Our Rate: ${rates[cropSelect.value]}`;
+          document.getElementById("rates-info").classList.remove("hidden");
+      } else {
+          document.getElementById("rates-info").classList.add("hidden");
+      }
+  });
 });
