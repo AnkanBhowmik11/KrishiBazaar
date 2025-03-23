@@ -19,7 +19,7 @@
             <ul class="flex space-x-6 ml-auto">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="krishibazaar.html" class="nav-link active">Products</a></li>
-                <li><a href="#" class="nav-link">Cart (<span id="cart-count">0</span>)</a></li>
+                <li><a href="cart.html" class="nav-link">Cart (<span id="cart-count">0</span>)</a></li>
             </ul>
         </div>
     </nav>
@@ -124,12 +124,12 @@
         }
     }
 
-    function addToCart(productName, pricePerKg) {
-        let qtyInput = document.getElementById(`qty-${productName.toLowerCase().replace(/\s/g, '-')}`);
-        let quantity = qtyInput ? qtyInput.value : 1;
-        let totalPrice = quantity * pricePerKg;
-        alert(`Added ${quantity} Kg of ${productName} to cart. Total: ₹${totalPrice}`);
-    }
+    function addToCart(productId, productName, pricePerKg) {
+    let qtyInput = document.getElementById(`qty-${productId}`);
+    let quantity = qtyInput ? parseInt(qtyInput.value) : 1;
+    let totalPrice = quantity * pricePerKg;
+    alert(`Added ${quantity} Kg of ${productName} to cart. Total: ₹${totalPrice}`);
+}
 </script>
 
 </body>

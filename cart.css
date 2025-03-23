@@ -1,0 +1,111 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5fff5;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Cart Container */
+.container {
+    max-width: 90%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 128, 0, 0.2);
+    border-radius: 10px;
+}
+
+/* Heading */
+h2 {
+    color: #008000;
+    margin-bottom: 20px;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #008000;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #008000;
+    color: white;
+}
+
+td {
+    background-color: #f0fff0;
+}
+
+/* Buttons */
+button {
+    background-color: #008000;
+    color: white;
+    border: none;
+    padding: 7px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #006400;
+}
+
+/* Remove Button */
+button.remove-btn {
+    background-color: red;
+}
+
+button.remove-btn:hover {
+    background-color: darkred;
+}
+
+/* Cart Footer */
+.cart-footer {
+    margin-top: 20px;
+}
+
+h3 {
+    color: #008000;
+}
+
+/* Checkout Button */
+.checkout-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+/* ✅ RESPONSIVENESS ✅ */
+@media screen and (max-width: 600px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th, td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .checkout-btn {
+        font-size: 16px;
+        padding: 10px;
+    }
+}

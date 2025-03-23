@@ -85,3 +85,50 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   });
 });
+
+let cartCount = 0;
+
+function addToCart(productName, pricePerKg) {
+    let qtyInput = document.getElementById(`qty-${productName.toLowerCase().replace(/\s/g, '-')}`);
+    let quantity = qtyInput ? parseInt(qtyInput.value) : 1;
+
+    if (quantity <= 0 || isNaN(quantity)) {
+        alert("Please enter a valid quantity!");
+        return;
+    }
+
+    let totalPrice = quantity * pricePerKg;
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    let existingProduct = cart.find(item => item.name === productName);
+    if (existingProduct) {
+        existingProduct.quantity += quantity;
+        existingProduct.totalPrice += totalPrice;
+    } else {
+        cart.push({ 
+            name: productName, 
+            pricePerKg: pricePerKg, 
+            quantity: quantity, 
+            totalPrice: totalPrice 
+        });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+    alert(`Added ${quantity} Kg of ${productName} to cart. Total: ₹${totalPrice}`);
+}
+
+document.getElementById('searchInput').addEventListener('input', function () {
+    let searchQuery = this.value.toLowerCase();
+    let products = document.querySelectorAll('.product');
+
+    products.forEach(product => {
+        let productName = product.getAttribute('data-name').toLowerCase();
+        if (productName.includes(searchQuery)) {
+            product.style.display = 'block';
+        } else {
+            product.style.display = 'none';
+        }
+    });
+});
