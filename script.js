@@ -85,3 +85,65 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   });
 });
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getDatabase, ref, push } from "firebase/database";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBLiQVkhI-EzyAZQDTqYlT6g2_1Uxcd0tY",
+  authDomain: "sell-stubble.firebaseapp.com",
+  databaseURL: "https://sell-stubble-default-rtdb.firebaseio.com",
+  projectId: "sell-stubble",
+  storageBucket: "sell-stubble.firebasestorage.app",
+  messagingSenderId: "700424695060",
+  appId: "1:700424695060:web:72da3816f12d23877da601",
+  measurementId: "G-6475308Y07"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+document.getElementById("sell-stubble-form").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent default form submission (page reload)
+
+    // Collect form data
+    const crop = document.getElementById("crop").value;
+    const fullName = document.getElementById("fullName").value;
+    const state = document.getElementById("state").value;
+    const district = document.getElementById("district").value;
+    const village = document.getElementById("village").value;
+    const pincode = document.getElementById("pincode").value;
+    const contact = document.getElementById("contact").value;
+
+    // Reference Firebase Database
+    const database = getDatabase(app); // Ensure the app is initialized
+    const dbRef = ref(database, "stubble-sellers");
+
+    // Push form data to the database
+    push(dbRef, {
+        crop,
+        fullName,
+        state,
+        district,
+        village,
+        pincode,
+        contact,
+    })
+    .then(() => {
+        console.log("Data successfully written to Firebase!");
+        document.getElementById("popupMessage").classList.remove("hidden"); // Show popup message
+        e.target.reset(); // Reset the form for the user
+    })
+    .catch((error) => {
+        console.error("Error writing data to Firebase:", error);
+    });
+});
+
+document.getElementById("popupMessage").innerHTML = "Thank you for submitting! We'll get back to you shortly.";
