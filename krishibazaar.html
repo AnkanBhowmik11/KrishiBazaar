@@ -30,67 +30,107 @@
             class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
     </div>
 
-    <!-- Product Section -->
-    <section class="max-w-6xl mx-auto p-8">
-        <h2 class="text-3xl font-bold text-gray-800 mb-6">Available Products</h2>
-        
-        <div id="productGrid" class="grid md:grid-cols-2 gap-6">
-            <!-- Product 1 -->
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden product" data-name="hybrid wheat pardhan 121 seed">
-                <img src="wheat-seed.jpg" alt="Hybrid Wheat Pardhan 121 Seed" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h3 class="text-xl font-bold text-gray-800">Hybrid Wheat Pardhan 121 Seed</h3>
-                    <p class="text-gray-600 mt-2">Packaging Type: PP Bag</p>
-                    <p class="text-green-600 font-bold mt-2">₹45/Kg</p>
-                    <div class="flex items-center mt-2">
-                        <button onclick="decreaseQty('wheat')" class="px-2 py-1 bg-gray-300 rounded">-</button>
-                        <input id="qty-wheat" type="number" min="1" max="20" value="1" class="mx-2 w-12 text-center border">
-                        <button onclick="increaseQty('wheat')" class="px-2 py-1 bg-gray-300 rounded">+</button>
-                        <p class="ml-4 text-green-700 font-bold" id="price-wheat">₹45</p>
-                    </div>
-                    <button onclick="addToCart('Hybrid Wheat Pardhan 121 Seed', 45)" class="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Add to Cart</button>
+   <!-- Product Section -->
+<section class="max-w-6xl mx-auto p-8">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6">Available Products</h2>
+    
+    <div id="productGrid" class="grid md:grid-cols-2 gap-6">
+        <!-- Product 1 -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden product" data-name="hybrid wheat pardhan 121 seed">
+            <img src="wheat-seed.jpg" alt="Hybrid Wheat Pardhan 121 Seed" class="w-full h-48 object-cover">
+            <div class="p-4">
+                <h3 class="text-xl font-bold text-gray-800">Hybrid Wheat Pardhan 121 Seed</h3>
+                <p class="text-gray-600 mt-2">Packaging Type: PP Bag</p>
+                <p class="text-green-600 font-bold mt-2">₹45/Kg</p>
+                <div class="flex items-center mt-2">
+                    <button onclick="decreaseQty('wheat', 45)" class="px-2 py-1 bg-gray-300 rounded">-</button>
+                    <input id="qty-wheat" type="number" min="1" max="20" value="1" class="mx-2 w-12 text-center border">
+                    <button onclick="increaseQty('wheat', 45)" class="px-2 py-1 bg-gray-300 rounded">+</button>
+                    <p class="ml-4 text-green-700 font-bold" id="price-wheat">₹45</p>
                 </div>
-            </div>
-
-            <!-- Product 2 -->
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden product" data-name="pr-131 paddy seeds">
-                <img src="paddy-seed.jpg" alt="PR-131 Paddy Seeds" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h3 class="text-xl font-bold text-gray-800">PR-131 Paddy Seeds</h3>
-                    <p class="text-gray-600 mt-2">30 Kg, Packaging Type: PP Bag</p>
-                    <p class="text-green-600 font-bold mt-2">₹65/Kg</p>
-                    <div class="flex items-center mt-2">
-                        <button onclick="decreaseQty('paddy')" class="px-2 py-1 bg-gray-300 rounded">-</button>
-                        <input id="qty-paddy" type="number" min="1" max="20" value="1" class="mx-2 w-12 text-center border">
-                        <button onclick="increaseQty('paddy')" class="px-2 py-1 bg-gray-300 rounded">+</button>
-                        <p class="ml-4 text-green-700 font-bold" id="price-paddy">₹65</p>
-                    </div>
-                    <button onclick="addToCart('PR-131 Paddy Seeds', 65)" class="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Add to Cart</button>
-                </div>
+                <button onclick="addToCart('Hybrid Wheat Pardhan 121 Seed', 45)" class="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Add to Cart</button>
             </div>
         </div>
-    </section>
 
-    <script>
-        function increaseQty(type) {
-            let qtyInput = document.getElementById(`qty-${type}`);
-            let priceDisplay = document.getElementById(`price-${type}`);
-            let pricePerKg = type === 'wheat' ? 45 : 65;
-            if (qtyInput.value < 20) {
-                qtyInput.value++;
-                priceDisplay.innerText = `₹${qtyInput.value * pricePerKg}`;
-            }
-        }
+        <!-- Product 2 -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden product" data-name="pr-131 paddy seeds">
+            <img src="paddy-seed.jpg" alt="PR-131 Paddy Seeds" class="w-full h-48 object-cover">
+            <div class="p-4">
+                <h3 class="text-xl font-bold text-gray-800">PR-131 Paddy Seeds</h3>
+                <p class="text-gray-600 mt-2">30 Kg, Packaging Type: PP Bag</p>
+                <p class="text-green-600 font-bold mt-2">₹65/Kg</p>
+                <div class="flex items-center mt-2">
+                    <button onclick="decreaseQty('paddy', 65)" class="px-2 py-1 bg-gray-300 rounded">-</button>
+                    <input id="qty-paddy" type="number" min="1" max="20" value="1" class="mx-2 w-12 text-center border">
+                    <button onclick="increaseQty('paddy', 65)" class="px-2 py-1 bg-gray-300 rounded">+</button>
+                    <p class="ml-4 text-green-700 font-bold" id="price-paddy">₹65</p>
+                </div>
+                <button onclick="addToCart('PR-131 Paddy Seeds', 65)" class="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Add to Cart</button>
+            </div>
+        </div>
 
-        function decreaseQty(type) {
-            let qtyInput = document.getElementById(`qty-${type}`);
-            let priceDisplay = document.getElementById(`price-${type}`);
-            let pricePerKg = type === 'wheat' ? 45 : 65;
-            if (qtyInput.value > 1) {
-                qtyInput.value--;
-                priceDisplay.innerText = `₹${qtyInput.value * pricePerKg}`;
-            }
+        <!-- Product 3 -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden product" data-name="bio-organic-manure">
+            <img src="organicmanure.jpg" alt="Bio Organic Manure Fertilizer" class="w-full h-48 object-cover">
+            <div class="p-4">
+                <h3 class="text-xl font-bold text-gray-800">Bio Organic Manure Fertilizer</h3>
+                <p class="text-gray-600 mt-2">1 Kg, Packaging Type: PP Bag</p>
+                <p class="text-green-600 font-bold mt-2">₹120/Kg</p>
+                <div class="flex items-center mt-2">
+                    <button onclick="decreaseQty('manure', 120)" class="px-2 py-1 bg-gray-300 rounded">-</button>
+                    <input id="qty-manure" type="number" min="1" max="20" value="1" class="mx-2 w-12 text-center border">
+                    <button onclick="increaseQty('manure', 120)" class="px-2 py-1 bg-gray-300 rounded">+</button>
+                    <p class="ml-4 text-green-700 font-bold" id="price-manure">₹120</p>
+                </div>
+                <button onclick="addToCart('Bio Organic Manure Fertilizer', 120)" class="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden product" data-name="organic-stubble-straw">
+            <img src="stubble-straw.jpeg" alt="100% Organic Stubble Straws" class="w-full h-48 object-cover">
+            <div class="p-4">
+                <h3 class="text-xl font-bold text-gray-800">100% Organic Stubble Straws - for Drinking Purposes</h3>
+                <p class="text-gray-600 mt-2">Packaging Type: PP Bag</p>
+                <p class="text-green-600 font-bold mt-2">₹100/Kg</p>
+                <div class="flex items-center mt-2">
+                    <button onclick="decreaseQty('straw', 100)" class="px-2 py-1 bg-gray-300 rounded">-</button>
+                    <input id="qty-straw" type="number" min="1" max="20" value="1" class="mx-2 w-12 text-center border">
+                    <button onclick="increaseQty('straw', 100)" class="px-2 py-1 bg-gray-300 rounded">+</button>
+                    <p class="ml-4 text-green-700 font-bold" id="price-straw">₹100</p>
+                </div>
+                <button onclick="addToCart('100% Organic Stubble Straws', 100)" class="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function increaseQty(type, pricePerKg) {
+        let qtyInput = document.getElementById(`qty-${type}`);
+        let priceDisplay = document.getElementById(`price-${type}`);
+        if (qtyInput.value < 20) {
+            qtyInput.value++;
+            priceDisplay.innerText = `₹${qtyInput.value * pricePerKg}`;
         }
-    </script>
+    }
+
+    function decreaseQty(type, pricePerKg) {
+        let qtyInput = document.getElementById(`qty-${type}`);
+        let priceDisplay = document.getElementById(`price-${type}`);
+        if (qtyInput.value > 1) {
+            qtyInput.value--;
+            priceDisplay.innerText = `₹${qtyInput.value * pricePerKg}`;
+        }
+    }
+
+    function addToCart(productName, pricePerKg) {
+        let qtyInput = document.getElementById(`qty-${productName.toLowerCase().replace(/\s/g, '-')}`);
+        let quantity = qtyInput ? qtyInput.value : 1;
+        let totalPrice = quantity * pricePerKg;
+        alert(`Added ${quantity} Kg of ${productName} to cart. Total: ₹${totalPrice}`);
+    }
+</script>
+
 </body>
 </html>
